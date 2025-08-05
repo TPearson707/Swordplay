@@ -1,5 +1,3 @@
-package src;
-
 public class CharacterFactory {
     public static Character createCharacter(String type, String name) {
         switch (type.toLowerCase()) {

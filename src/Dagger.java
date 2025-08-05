@@ -1,5 +1,3 @@
-package src;
-
 public class Dagger implements Weapon {
     private int damage;
 

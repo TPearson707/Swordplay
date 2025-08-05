@@ -1,5 +1,3 @@
-package src;
-
 public class Claymore implements Weapon {
     private int damage;
 

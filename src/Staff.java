@@ -1,5 +1,3 @@
-package src;
-
 public class Staff implements Weapon {
     private int damage;
 
