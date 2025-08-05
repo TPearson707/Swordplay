@@ -1,11 +1,12 @@
-public class Claymore implements Weapon {
+package weapons;
+public class Dagger implements Weapon {
     private int damage;
 
-    public Claymore() {
-        this.damage = 10; // Default damage value
+    public Dagger() {
+        this.damage = 5; // Default damage value for Dagger
     }
 
-    public Claymore(int damage) {
+    public Dagger(int damage) {
         if (damage <= 0) {
             throw new IllegalArgumentException("Damage must be positive");
         }
@@ -16,5 +17,4 @@ public class Claymore implements Weapon {
     public int attack() {
         return damage;
     }
-    
 }

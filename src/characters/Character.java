@@ -1,3 +1,7 @@
+package characters;
+
+import weapons.Weapon;
+
 public class Character {
 	private String name;
 	private int hp;
@@ -62,7 +66,7 @@ public class Character {
 		this.name = name;
 	}
 
-	public void setHp(int hp) {
+	public void setHealth(int hp) {
 		if (hp < 0) {
 			throw new IllegalArgumentException("HP cannot be negative");
 		}
@@ -108,7 +112,7 @@ public class Character {
 		return name;
 	}
 
-	public int getHp() {
+	public int getHealth() {
 		return hp;
 	}
 
@@ -171,7 +175,10 @@ public class Character {
 		damage -= armourClass; // Subtract armour class from damage
 
 		if (damage < 0) {
-			throw new IllegalArgumentException("Damage cannot be negative");
+			// throw new IllegalArgumentException("Damage cannot be negative");
+
+			damage = 0; // If damage is less than armour class, no damage is taken
+			System.out.println(name + " blocks all damage with armour class of " + armourClass + ".");
 		}
 		hp -= (damage);
 		if (hp < 0) {

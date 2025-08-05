@@ -1,5 +1,7 @@
 import java.util.Queue;
 
+import characters.Character;
+
 public class Game {
     private Character player;
     private Character enemy;
@@ -31,6 +33,10 @@ public class Game {
 
     private void playerTurn() {
         System.out.println(player.getName() + "'s turn:");
+
+        player.setAction(true);
+        player.setBonusAction(true);
+
         if (player.isAction()) {
             player.attack(enemy);
         } else {
@@ -41,6 +47,10 @@ public class Game {
 
     private void enemyTurn() {
         System.out.println(enemy.getName() + "'s turn:");
+
+        enemy.setAction(true);
+        enemy.setBonusAction(false);
+
         if (enemy.isAction()) {
             enemy.attack(player);
         } else {

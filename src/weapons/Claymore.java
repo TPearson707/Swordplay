@@ -1,11 +1,13 @@
-public class Staff implements Weapon {
+package weapons;
+
+public class Claymore implements Weapon {
     private int damage;
 
-    public Staff() {
-        this.damage = 8; // Default damage value for Staff
+    public Claymore() {
+        this.damage = 10; // Default damage value
     }
 
-    public Staff(int damage) {
+    public Claymore(int damage) {
         if (damage <= 0) {
             throw new IllegalArgumentException("Damage must be positive");
         }

@@ -1,22 +1,27 @@
-class Main {
+import characters.Character;
+import characters.CharacterFactory;
+
+public class Main {
     public static void main(String[] args) {
+        // Initialize the game
+        System.out.println("Welcome to the Swordplay Game!");
+        System.out.println("Setting up characters and weapons...");
 
+        // Create characters
         Character rogue = CharacterFactory.createCharacter("rogue", "Shadow");
-        Character warrior = CharacterFactory.createCharacter("warrior", "Arthur");
-        Character mage = CharacterFactory.createCharacter("mage", "Merlin");
+        Character mage = CharacterFactory.createCharacter("mage", "Mystic");
+        Character warrior = CharacterFactory.createCharacter("warrior", "Berserker");
 
-        // Example of setting armour class
-        rogue.setArmourClass(5);
-        warrior.setArmourClass(10);
-        mage.setArmourClass(3);
 
-        // Example of taking damage
-        // warrior.takeDamage(20);
-        // mage.takeDamage(15);
+        // Create a game instance with the characters
+        System.out.println("Characters created:");
+        System.out.println(rogue.getName() + " (Rogue) - Health: " + rogue.getHealth());
+        System.out.println(mage.getName() + " (Mage) - Health: " + mage.getHealth());
+        // System.out.println(warrior.getName() + " (Warrior) - Health: " + warrior.getHealth());
 
-        // Example of setting up game
-        Game game = new Game(warrior, mage);
+        System.out.println("Characters ready for battle!");
+        System.out.println("Starting the game...");
+        Game game = new Game(rogue, warrior);
         game.start();
-        
     }
 }

@@ -1,11 +1,12 @@
-public class Dagger implements Weapon {
+package weapons;
+public class Staff implements Weapon {
     private int damage;
 
-    public Dagger() {
-        this.damage = 5; // Default damage value for Dagger
+    public Staff() {
+        this.damage = 8; // Default damage value for Staff
     }
 
-    public Dagger(int damage) {
+    public Staff(int damage) {
         if (damage <= 0) {
             throw new IllegalArgumentException("Damage must be positive");
         }
@@ -16,4 +17,5 @@ public class Dagger implements Weapon {
     public int attack() {
         return damage;
     }
+    
 }

@@ -1,3 +1,10 @@
+package characters;
+
+import weapons.Claymore;
+import weapons.Dagger;
+import weapons.Staff;
+import weapons.Weapon;
+
 public class CharacterFactory {
     public static Character createCharacter(String type, String name) {
         switch (type.toLowerCase()) {
