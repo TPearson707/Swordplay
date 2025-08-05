@@ -143,17 +143,20 @@ public class Character {
 	 * their HP or other game state.
 	 *******************************************************/
 
-	public void attack() {
-		if (weapon != null) {
-			int damage = weapon.attack();
-			System.out.println(name + " attacks with " + weapon.getClass().getSimpleName() + " for " + damage + " damage.");
-			// Here you could implement logic to apply damage to a target, if applicable
-			// For example, if this character is attacking another character:
-			// targetCharacter.takeDamage(damage);
-			hp -= damage; // Example: reduce HP by damage amount
-		} else {
+	public void attack(Character targetCharacter) {
+		if (weapon == null) {
 			System.out.println(name + " has no weapon to attack with.");
 		}
+
+		int damage = weapon.attack();
+
+		if (damage <= 0) {
+			System.out.println(name + " attacks but deals no damage.");
+		}
+
+		System.out.println(name + " attacks with " + weapon.getClass().getSimpleName() + " for " + damage + " damage.");
+		targetCharacter.takeDamage(damage);
+		action = false; // Reset action after attack
 	}
 
 	/*******************************************************
