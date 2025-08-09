@@ -1,4 +1,5 @@
 import java.util.Queue;
+import java.util.Scanner;
 
 import characters.Character;
 
@@ -23,6 +24,7 @@ public class Game {
         System.out.println("Game started between " + player.getName() + " and " + enemy.getName());
         while (!gameOver) {
             System.out.println("Round " + round);
+
             playerTurn();
             if (gameOver) break;
             enemyTurn();
@@ -37,12 +39,21 @@ public class Game {
         player.setAction(true);
         player.setBonusAction(true);
 
+        Scanner stdin = new Scanner(System.in);
+
         if (player.isAction()) {
-            player.attack(enemy);
+            String decision = stdin.nextLine();
+
+            if (!handlePlayerAction(decision)) {
+                System.exit(1);
+            }
+            
         } else {
             System.out.println(player.getName() + " has no action available.");
         }
         checkGameOver();
+
+        stdin.close();
     }
 
     private void enemyTurn() {
@@ -59,6 +70,25 @@ public class Game {
         checkGameOver();
     }
 
+    private boolean handlePlayerAction(String decision) {
+        switch(decision) {
+            case "ATTACK": 
+                player.attack(enemy);
+                break;
+            case "DEFEND":
+                System.out.println("Currently no defend action available");
+                break;
+            case "CAST":
+                System.out.println("Currently no casting action available");
+                break;
+            default:
+                System.out.println("ERROR - invalid decision please try again or quit");
+                return false;
+        }
+
+        return true;
+    }
+
     private void checkGameOver() {
         if (!player.isAlive() || !enemy.isAlive()) {
             gameOver = true;
@@ -71,6 +101,11 @@ public class Game {
         }
     }
 
+/*
+ * 
+ * hello i love you
+ */
+
     public Character getPlayer() {
         return player;
     }
@@ -79,6 +114,12 @@ public class Game {
         return enemy;
     }
 
-
+    public void prompt() {
+        System.out.println("What would you like to do " + player.getName() + "?");
+        System.out.println("ATTACK - attack the enemy");
+        System.out.println("DEFEND - attempt to block an incoming physical attack");
+        System.out.println("CAST - Cast a spell from player spell list");
+        System.out.println("");
+    }
 
 }
